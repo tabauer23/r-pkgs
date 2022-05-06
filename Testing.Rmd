@@ -357,12 +357,21 @@ In the past / in the second edition of testthat, `expect_equal()` wraps `all.equ
     expect_error(1 / 2) 
     ```
 
-*   `expect_is()` checks that an object `inherit()`s from a specified class.
+*   `expect_is()` checks that an object `inherit()`s from a specified class. 
 
     ```{r, error = TRUE, eval = FALSE}
     model <- lm(mpg ~ wt, data = mtcars)
     expect_is(model, "lm")
     expect_is(model, "glm")
+    ```
+    `expect_is()` was deprecated in the 3rd edition. Use `expect_type()`, 
+    `expect_s3_class()`, or `expect_s4_class()` instead.
+
+    ```{r, error = TRUE, eval = FALSE}
+    model <- lm(mpg ~ wt, data = mtcars)
+    expect_type(model, "lm")
+    expect_s3_class(model, "lm")
+    expect_s4_class(model, "lm")
     ```
 
 *   `expect_true()` and `expect_false()` are useful catchalls if none of the 
